@@ -1,0 +1,2 @@
+C:\Users\abkumar\Desktop\SFChatBot\SFChatBot\obj\Debug\SFChatBot.njsprojResolveAssemblyReference.cache
+C:\Users\abkumar\Desktop\SFChatBot\SFChatBot\bin\Microsoft.NodejsTools.WebRole.dll
