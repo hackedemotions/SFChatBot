@@ -38,14 +38,16 @@ let processText = (text, sender)  => {
     if (match) {
         sendMessage({text:
             `You can ask me things like:
-    Search a patient <<name>>
-    Search a doctor <<name>>
+    Search patient <<name>>
+    Search appointment <<date>>
+    Create case <<summary>>
         `}, sender);
         return;
     }
 
-    match = text.match(/search a patient (.*)/i);
+    match = text.match(/search patient (.*)/i);
     if (match) {
+        sendMessage({ text: `Searching for the patient ${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
             sendMessage({text: `Here are the accounts I found matching "${match[1]}":`}, sender);
             sendMessage(formatter.formatAccounts(accounts), sender)
