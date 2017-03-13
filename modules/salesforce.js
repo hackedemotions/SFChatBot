@@ -2,15 +2,16 @@
 
 let nforce = require('nforce'),
 
-    SF_CLIENT_ID = process.env.SF_CLIENT_ID,
-    SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
-    SF_USER_NAME = process.env.SF_USER_NAME,
-    SF_PASSWORD = process.env.SF_PASSWORD;
+    SF_CLIENT_ID = "3MVG9PbQtiUzNgN6G2.NfFw.YP5lSKsEzNStrbJrmWeZMamXaIHmyTVrpp3OixMsbHsH_iBd_3xwvaffQxSxn",
+    SF_CLIENT_SECRET = "7218667220180978191",
+    SF_USER_NAME = "abkumar@coh.org.lightning",
+    SF_PASSWORD = "Sks106519";
 
 let org = nforce.createConnection({
     clientId: SF_CLIENT_ID,
     clientSecret: SF_CLIENT_SECRET,
     redirectUri: 'http://localhost:3000/oauth/_callback',
+    environment: 'sandbox',
     mode: 'single',
     autoRefresh: true
 });
@@ -28,14 +29,6 @@ let login = () => {
 
 let findAccount = name => {
     return new Promise((resolve, reject) => {
-        org.authenticate({ username: SF_USER_NAME, password: SF_PASSWORD }, err => {
-            if (err) {
-                console.error("Authentication error");
-                console.error(err);
-            } else {
-                console.log("Authentication successful");
-            }
-        });
         let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {
             if (err) {
@@ -50,14 +43,7 @@ let findAccount = name => {
 };
 
 let findContact = name => {
-    org.authenticate({ username: SF_USER_NAME, password: SF_PASSWORD }, err => {
-        if (err) {
-            console.error("Authentication error");
-            console.error(err);
-        } else {
-            console.log("Authentication successful");
-        }
-    });
+
     return new Promise((resolve, reject) => {
         let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {

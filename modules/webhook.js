@@ -52,20 +52,10 @@ let processText = (text, sender) => {
     if (match) {
         sendMessage({ text: `Searching for patient "${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
-            sendMessage({ text: `Here are the accounts I found matching "${match[1]}":` }, sender);
+            sendMessage({ text: `Here are the patient accounts I found matching "${match[1]}":` }, sender);
             sendMessage(formatter.formatAccounts(accounts), sender)
         });
         return;
-    }
-    else {
-        sendMessage({
-            text: `Sorry, I canont understand.
-        You can ask me things like:
-        Search patient <<name>>
-        Search doctor <<name>>
-        Search appt <<date>>
-        Create case <<summary>>
-        ` }, sender);
     }
 
     match = text.match(/search (.*) in accounts/i);
@@ -81,20 +71,10 @@ let processText = (text, sender) => {
     if (match) {
         sendMessage({ text: `Searching for doctor "${match[1]}":` }, sender);
         salesforce.findContact(match[1]).then(contacts => {
-            sendMessage({ text: `Here are the contacts I found matching "${match[1]}":` }, sender);
+            sendMessage({ text: `Here are the doctors I found matching "${match[1]}":` }, sender);
             sendMessage(formatter.formatContacts(contacts), sender)
         });
         return;
-    }
-    else {
-        sendMessage({
-            text: `Sorry, I canont understand.
-        You can ask me things like:
-        Search patient <<name>>
-        Search doctor <<name>>
-        Search appt <<date>>
-        Create case <<summary>>
-        ` }, sender);
     }
 
     match = text.match(/top (.*) opportunities/i);
