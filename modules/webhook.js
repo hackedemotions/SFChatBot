@@ -43,6 +43,7 @@ let processText = (text, sender)  => {
     Create case <<summary>>
         `}, sender);
         return;
+
     }
 
     match = text.match(/search patient (.*)/i);
