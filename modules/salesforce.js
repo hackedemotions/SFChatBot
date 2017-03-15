@@ -2,8 +2,8 @@
 
 let nforce = require('nforce'),
 
-    SF_CLIENT_ID = "3MVG9PbQtiUzNgN6G2.NfFw.YP5lSKsEzNStrbJrmWeZMamXaIHmyTVrpp3OixMsbHsH_iBd_3xwvaffQxSxn",
-    SF_CLIENT_SECRET = "7218667220180978191",
+    SF_CLIENT_ID = "3MVG9PbQtiUzNgN6G2.NfFw.YPxQ198wCeEjVzVIoVPwWwfJLx7_3QjAD_hCMdixbMiqfhBvhDo_I_AfCYA8Z",
+    SF_CLIENT_SECRET = "2613139289057230490",
     SF_USER_NAME = "abkumar@coh.org.lightning",
     SF_PASSWORD = "Sks106519";
 
