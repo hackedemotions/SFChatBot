@@ -11,7 +11,6 @@ let org = nforce.createConnection({
     clientId: SF_CLIENT_ID,
     clientSecret: SF_CLIENT_SECRET,
     redirectUri: 'https://sfchatbottry1.herokuapp.com/oauth/_callback',
-    environment: 'sandbox',
     mode: 'single',
     autoRefresh: true
 });
