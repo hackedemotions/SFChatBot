@@ -27,14 +27,6 @@ let login = () => {
 };
 
 let findAccount = name => {
-    org.authenticate({ username: SF_USER_NAME, password: SF_PASSWORD }, err => {
-        if (err) {
-            console.error("Authentication error");
-            console.error(err);
-        } else {
-            console.log("Authentication successful");
-        }
-    });
     return new Promise((resolve, reject) => {
         let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {
