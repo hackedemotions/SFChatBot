@@ -25,8 +25,8 @@ let sendMessage = (message, recipient) => {
 let processText = (text, sender) => {
     let match;
     let responseTxt = 'Hi, How are you doing today ?';
-    getUserInfo(sender).then(response => {
-        responseTxt = `Hello, ${response.first_name}!`;
+    responseTxt = getUserInfo(sender).then(response => {
+        `Hello, ${response.first_name}!`;
     });
 
     match = text.match(/hi/i);
