@@ -34,15 +34,16 @@ let findAccount = name => {
                 console.error(err);
             } else {
                 console.log("Authentication successful");
-                let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
-                org.query({ query: q }, (err, resp) => {
-                    if (err) {
-                        reject("An error as occurred");
-                    } else if (resp.records && resp.records.length > 0) {
-                        let accounts = resp.records;
-                        resolve(accounts);
-                    }
-                });
+            }
+        });
+
+        let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else if (resp.records && resp.records.length>0) {
+                let accounts = resp.records;
+                resolve(accounts);
             }
         });
     });
