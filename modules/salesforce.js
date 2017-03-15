@@ -28,21 +28,13 @@ let login = () => {
 
 let findAccount = name => {
     return new Promise((resolve, reject) => {
-        org.authenticate({ username: SF_USER_NAME, password: SF_PASSWORD }, err => {
+        let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
+        org.query({query: q}, (err, resp) => {
             if (err) {
-                console.error("Authentication error");
-                console.error(err);
-            } else {
-                console.log("Authentication successful");
-                let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
-                org.query({ query: q }, (err, resp) => {
-                    if (err) {
-                        reject("An error as occurred");
-                    } else if (resp.records && resp.records.length > 0) {
-                        let accounts = resp.records;
-                        resolve(accounts);
-                    }
-                });
+                reject("An error as occurred");
+            } else if (resp.records && resp.records.length>0) {
+                let accounts = resp.records;
+                resolve(accounts);
             }
         });
     });
