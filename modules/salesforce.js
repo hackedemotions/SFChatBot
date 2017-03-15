@@ -28,6 +28,7 @@ let login = () => {
 };
 
 let findAccount = name => {
+    login();
     return new Promise((resolve, reject) => {
         let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {
@@ -92,7 +93,7 @@ let getTopOpportunities = count => {
 
 };
 
-login();
+//login();
 
 exports.org = org;
 exports.findAccount = findAccount;
