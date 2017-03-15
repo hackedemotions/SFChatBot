@@ -24,13 +24,16 @@ let sendMessage = (message, recipient) => {
 
 let processText = (text, sender) => {
     let match;
+    let response = 'Hi, How are you doing today ?';
+    getUserInfo(sender).then(
+        { reponse = `Hello, ${response.first_name}!` });
+
     match = text.match(/hi/i);
     if (match) {
         sendMessage({
             text:
-            `Hi, How are you doing today ?:
-            How can I help You ?
-    `}, sender);
+            response
+        }, sender);
         return;
     }
 
@@ -116,6 +119,29 @@ let handlePost = (req, res) => {
         }
     }
     res.sendStatus(200);
+};
+
+
+let getUserInfo = (userId) => {
+
+    return new Promise((resolve, reject) => {
+
+        request({
+            url: `https://graph.facebook.com/v2.6/${userId}`,
+            qs: { fields: "first_name,last_name,profile_pic", access_token: FB_PAGE_TOKEN },
+            method: 'GET',
+        }, (error, response) => {
+            if (error) {
+                console.log('Error sending message: ', error);
+                reject(error);
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error);
+            } else {
+                resolve(JSON.parse(response.body));
+            }
+        });
+
+    });
 };
 
 exports.handleGet = handleGet;
