@@ -91,7 +91,7 @@ let getTopOpportunities = count => {
 
 };
 
-//login();
+login();
 
 exports.org = org;
 exports.findAccount = findAccount;
