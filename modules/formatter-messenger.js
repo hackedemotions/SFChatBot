@@ -48,7 +48,7 @@ let formatAppointment = accounts => {
 let bookAppointment = accounts => {
     let elements = [];
     elements.push({
-        title: account.get("Appointment Details"),
+        title: "Appointment Details",
         subtitle: "Click on the link to book appointment.",
             "buttons": [{
                 "type": "web_url",
@@ -71,7 +71,7 @@ let bookAppointment = accounts => {
 let symptomManagement = accounts => {
     let elements = [];
     elements.push({
-        title: account.get("Symptom Details"),
+        title: "Symptom Details",
         subtitle: "Click on the link to read more.",
         "buttons": [{
             "type": "web_url",
