@@ -30,13 +30,13 @@ let processText = (text, sender) => {
         sendMessage({
             text:
             `Hi, How can I help you ?
-    You can ask me things like:
-    Search patient <<name>>
-    LookUp appointment
-    Book appointment <<name>>
-    Symptom <<name>>
-    Create case <<summary>>
-        `
+        You can ask me things like:
+        Search patient << name >>
+        LookUp appointment <<patient name>>
+        Book appointment
+        Symptom << name >>
+        Create case <<summary >>
+         `
         }, sender);
         return;
     }
@@ -46,11 +46,11 @@ let processText = (text, sender) => {
         sendMessage({
             text:
             `You can ask me things like:
-    Search patient <<name>>
-    LookUp appointment <<patient name>>
-    Book appointment
-    Symptom <<name>>
-    Create case <<summary>>
+    search patient <<name>>
+    lookup appointment <<patient name>>
+    book appointment
+    symptom <<name>>
+    create case <<summary>>
         `}, sender);
         return;
 
@@ -66,7 +66,7 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/LookUp appointment (.*)/i);
+    match = text.match(/lookup appointment (.*)/i);
     if (match) {
         sendMessage({ text: `Looking for appointment for patient "${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
@@ -76,7 +76,7 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/Book appointment (.*)/i);
+    match = text.match(/book appointment (.*)/i);
     if (match) {
         salesforce.findAccount(match[1]).then(accounts => {
             sendMessage(formatter.formatAppointment(accounts), sender)
@@ -84,7 +84,7 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/Symptom (.*)/i);
+    match = text.match(/symptom (.*)/i);
     if (match) {
         sendMessage({ text: `Looking for articles on symptom management for "${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
@@ -94,7 +94,7 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/Create case (.*)/i);
+    match = text.match(/create case (.*)/i);
     if (match) {
         sendMessage({ text: `Searching for doctor "${match[1]}":` }, sender);
         salesforce.findContact(match[1]).then(contacts => {
