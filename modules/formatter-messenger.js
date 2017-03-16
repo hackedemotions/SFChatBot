@@ -46,7 +46,7 @@ let formatAppointment = accounts => {
 };
 
 let bookAppointment = accounts => {
-    let elements[];
+    let elements = [];
     elements.push({
             "buttons": [{
                 "type": "web_url",
@@ -67,7 +67,7 @@ let bookAppointment = accounts => {
 };
 
 let symptomManagement = accounts => {
-    let elements[];
+    let elements = [];
     elements.push({
         "buttons": [{
             "type": "web_url",
