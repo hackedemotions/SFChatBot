@@ -1,5 +1,6 @@
 "use strict";
 
+
 let formatAccounts = accounts => {
     let elements = [];
     accounts.forEach(account =>

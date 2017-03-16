@@ -91,9 +91,8 @@ let processText = (text, sender) => {
     match = text.match(/create case (.*)/i);
     if (match) {
         sendMessage({ text: `Creating a case for you` }, sender);
-        salesforce.findContact(match[1]).then(contacts => {
-            sendMessage({ text: `Here are the doctors I found matching "${match[1]}":` }, sender);
-            sendMessage(formatter.formatContacts(contacts), sender)
+        salesforce.createCase(match[1]).then(accounts => {
+            sendMessage({ text: `Your case has been created` }, sender);
         });
         return;
     }

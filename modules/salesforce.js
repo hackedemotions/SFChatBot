@@ -48,7 +48,6 @@ let findAccount = name => {
             });
         });
     });
-
 };
 
 let createCase = (subject) => {
