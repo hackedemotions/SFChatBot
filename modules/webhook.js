@@ -24,12 +24,19 @@ let sendMessage = (message, recipient) => {
 
 let processText = (text, sender) => {
     let match;
-    let responseTxt = 'Hi, How are you doing today ?';
+    let responseTxt = 'Hi, How can I help you ?';
     match = text.match(/hi/i);
     if (match) {
         sendMessage({
             text:
-            responseTxt
+            `Hi, How can I help you ?
+    You can ask me things like:
+    Search patient <<name>>
+    LookUp appointment
+    Book appointment <<name>>
+    Symptom <<name>>
+    Create case <<summary>>
+        `
         }, sender);
         return;
     }
@@ -40,8 +47,9 @@ let processText = (text, sender) => {
             text:
             `You can ask me things like:
     Search patient <<name>>
-    Search doctor <<name>>
-    Search appt <<date>>
+    LookUp appointment <<patient name>>
+    Book appointment
+    Symptom <<name>>
     Create case <<summary>>
         `}, sender);
         return;
@@ -58,30 +66,40 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/search (.*) in accounts/i);
+    match = text.match(/LookUp appointment (.*)/i);
     if (match) {
+        sendMessage({ text: `Looking for appointment for patient "${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
-            sendMessage({ text: `Here are the accounts I found matching "${match[1]}":` }, sender);
-            sendMessage(formatter.formatAccounts(accounts), sender)
+            sendMessage({ text: `Your appointment is scheduled at "${match[1]}":` }, sender);
+            sendMessage(formatter.formatAppointment(accounts), sender)
         });
         return;
     }
 
-    match = text.match(/search doctor (.*)/i);
+    match = text.match(/Book appointment (.*)/i);
+    if (match) {
+        salesforce.findAccount(match[1]).then(accounts => {
+            sendMessage(formatter.formatAppointment(accounts), sender)
+        });
+        return;
+    }
+
+    match = text.match(/Symptom (.*)/i);
+    if (match) {
+        sendMessage({ text: `Looking for articles on symptom management for "${match[1]}":` }, sender);
+        salesforce.findAccount(match[1]).then(accounts => {
+            sendMessage({ text: `Your appointment is scheduled at "${match[1]}":` }, sender);
+            sendMessage(formatter.formatAppointment(accounts), sender)
+        });
+        return;
+    }
+
+    match = text.match(/Create case (.*)/i);
     if (match) {
         sendMessage({ text: `Searching for doctor "${match[1]}":` }, sender);
         salesforce.findContact(match[1]).then(contacts => {
             sendMessage({ text: `Here are the doctors I found matching "${match[1]}":` }, sender);
             sendMessage(formatter.formatContacts(contacts), sender)
-        });
-        return;
-    }
-
-    match = text.match(/top (.*) opportunities/i);
-    if (match) {
-        salesforce.getTopOpportunities(match[1]).then(opportunities => {
-            sendMessage({ text: `Here are your top ${match[1]} opportunities:` }, sender);
-            sendMessage(formatter.formatOpportunities(opportunities), sender)
         });
         return;
     }

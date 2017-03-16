@@ -37,11 +37,7 @@ let findAccount = name => {
         });
 
         org.authenticate({ username: 'abkumar@coh.org.lightning', password: 'Sks106519' }, function (err, resp) {
-            // the oauth object was stored in the connection object
-            if (!err) console.log('Cached Token: ' + org.oauth.access_token);
-
-            let name = "test";
-            let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
+            let q = "SELECT Id, Name, Patient_Status__c, Gender__pc, Date_of_Birth__c, Appointment_Date_Time__c, COH_MRN__c FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
             org.query({ query: q }, (err, resp) => {
                 if (err) {
                     reject("An error as occurred");
