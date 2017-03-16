@@ -51,56 +51,27 @@ let findAccount = name => {
 
 };
 
-let findContact = name => {
+let createCase = (subject) => {
 
     return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Name LIKE '%" + name + "%' LIMIT 5";
-        org.query({query: q}, (err, resp) => {
-            if (err) {
-                reject("An error as occurred");
-            } else if (resp.records && resp.records.length>0) {
-                let contacts = resp.records;
-                resolve(contacts);
-            }
-        });
-    });
+        let c = nforce.createSObject('Case');
+        c.set('subject', subject);
+        c.set('Action_Taken__c', "EMAIL SENT TO PATIENT");
+        c.set('origin', 'BAP');
+        c.set('status', 'New');
+        c.set('ContactId', '0034B00000CI5n4QAD');
 
-};
-
-let findContactsByAccount = accountId => {
-
-    return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Account.Id = '" + accountId + "' LIMIT 5";
-        org.query({query: q}, (err, resp) => {
-            if (err) {
-                reject("An error as occurred");
-            } else if (resp.records && resp.records.length>0) {
-                let contacts = resp.records;
-                resolve(contacts);
-            }
-        });
-    });
-
-};
-
-let getTopOpportunities = count => {
-
-    count = count || 5;
-
-    return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Amount, Probability, StageName, CloseDate, Account.Name, Account.Picture_URL__c FROM Opportunity WHERE isClosed=false ORDER BY amount DESC LIMIT " + count;
-        org.query({query: q}, (err, resp) => {
+        org.insert({ sobject: c }, err => {
             if (err) {
                 console.error(err);
-                reject("An error as occurred");
+                reject("An error occurred while creating a case");
             } else {
-                resolve(resp.records);
+                resolve(c);
             }
         });
     });
 
 };
-
 //login();
 
 exports.org = org;
