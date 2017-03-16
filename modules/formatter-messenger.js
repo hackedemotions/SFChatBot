@@ -48,6 +48,8 @@ let formatAppointment = accounts => {
 let bookAppointment = accounts => {
     let elements = [];
     elements.push({
+        title: account.get("Appointment Details"),
+        subtitle: "Click on the link to book appointment.",
             "buttons": [{
                 "type": "web_url",
                 "url": "https://secure.cityofhope.org/newpatientrequest/",
@@ -69,6 +71,8 @@ let bookAppointment = accounts => {
 let symptomManagement = accounts => {
     let elements = [];
     elements.push({
+        title: account.get("Symptom Details"),
+        subtitle: "Click on the link to read more.",
         "buttons": [{
             "type": "web_url",
             "url": "https://www.cityofhope.org/patients/departments-and-services/hematologic-malignancies-and-stem-cell-transplantation-institute",
