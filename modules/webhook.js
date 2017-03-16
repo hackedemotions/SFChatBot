@@ -32,7 +32,6 @@ let processText = (text, sender) => {
             `Hi, How can I help you ?
         You can ask me things like:
         search patient <<name>>
-        lookup appointment <<patient name>>
         book appointment
         symptom <<name>>
         create case <<summary>>
@@ -47,7 +46,6 @@ let processText = (text, sender) => {
             text:
             `You can ask me things like:
     search patient <<name>>
-    lookup appointment <<patient name>>
     book appointment
     symptom <<name>>
     create case <<summary>>

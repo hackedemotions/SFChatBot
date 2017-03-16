@@ -6,7 +6,7 @@ let formatAccounts = accounts => {
     accounts.forEach(account =>
         elements.push({
             title: account.get("Name"),
-            subtitle: account.get("COH_MRN__c") + ", " + account.get("Patient_Status__c") + " " + account.get("Gender__pc") + " · " + account.get("Date_of_Birth__c"),
+            subtitle: "Patient Details",
             "buttons": [{
                 "type": "web_url",
                 "url": "https://cityofhope--lightning.lightning.force.com/" + account.getId(),
