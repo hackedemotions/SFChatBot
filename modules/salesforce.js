@@ -57,7 +57,6 @@ let createCase = (subject) => {
             clientId: '3MVG9PbQtiUzNgN6G2.NfFw.YPxQ198wCeEjVzVIoVPwWwfJLx7_3QjAD_hCMdixbMiqfhBvhDo_I_AfCYA8Z',
             clientSecret: '2613139289057230490',
             redirectUri: 'http://localhost:3000/oauth/_callback',
-            environment: 'sandbox',
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
