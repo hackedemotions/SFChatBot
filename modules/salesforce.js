@@ -53,13 +53,6 @@ let findAccount = name => {
 let createCase = (subject) => {
 
     return new Promise((resolve, reject) => {
-        var org = nforce.createConnection({
-            clientId: '3MVG9PbQtiUzNgN6G2.NfFw.YPxQ198wCeEjVzVIoVPwWwfJLx7_3QjAD_hCMdixbMiqfhBvhDo_I_AfCYA8Z',
-            clientSecret: '2613139289057230490',
-            redirectUri: 'http://localhost:3000/oauth/_callback',
-            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
-        });
-
         let c = nforce.createSObject('Case');
         c.set('subject', subject);
         c.set('Action_Taken__c', "EMAIL SENT TO PATIENT");
