@@ -31,11 +31,11 @@ let processText = (text, sender) => {
             text:
             `Hi, How can I help you ?
         You can ask me things like:
-        Search patient << name >>
-        LookUp appointment <<patient name>>
-        Book appointment
-        Symptom << name >>
-        Create case <<summary >>
+        search patient <<name>>
+        lookup appointment <<patient name>>
+        book appointment
+        symptom <<name>>
+        create case <<summary>>
          `
         }, sender);
         return;
@@ -70,7 +70,6 @@ let processText = (text, sender) => {
     if (match) {
         sendMessage({ text: `Looking for appointment for patient "${match[1]}":` }, sender);
         salesforce.findAccount(match[1]).then(accounts => {
-            sendMessage({ text: `Your appointment is scheduled at "${match[1]}":` }, sender);
             sendMessage(formatter.formatAppointment(accounts), sender)
         });
         return;
@@ -78,25 +77,20 @@ let processText = (text, sender) => {
 
     match = text.match(/book appointment (.*)/i);
     if (match) {
-        salesforce.findAccount(match[1]).then(accounts => {
-            sendMessage(formatter.formatAppointment(accounts), sender)
-        });
+        sendMessage(formatter.bookAppointment('test'), sender);
         return;
     }
 
     match = text.match(/symptom (.*)/i);
     if (match) {
         sendMessage({ text: `Looking for articles on symptom management for "${match[1]}":` }, sender);
-        salesforce.findAccount(match[1]).then(accounts => {
-            sendMessage({ text: `Your appointment is scheduled at "${match[1]}":` }, sender);
-            sendMessage(formatter.formatAppointment(accounts), sender)
-        });
+        sendMessage(formatter.symptomManagement('test'), sender);
         return;
     }
 
     match = text.match(/create case (.*)/i);
     if (match) {
-        sendMessage({ text: `Searching for doctor "${match[1]}":` }, sender);
+        sendMessage({ text: `Creating a case for you` }, sender);
         salesforce.findContact(match[1]).then(contacts => {
             sendMessage({ text: `Here are the doctors I found matching "${match[1]}":` }, sender);
             sendMessage(formatter.formatContacts(contacts), sender)
