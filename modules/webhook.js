@@ -36,89 +36,89 @@ let processText = (text, sender) => {
                     "elements": [
                         {
                             "title": "Classic White T-Shirt",
-                            "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
-                                "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
                                 "messenger_extensions": true,
                                 "webview_height_ratio": "tall",
-                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                "fallback_url": "https://www.cityofhope.org"
                             },
                             "buttons": [
                                 {
                                     "title": "Buy",
                                     "type": "web_url",
-                                    "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                                    "url": "https://www.cityofhope.org/research/research-overview",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                    "fallback_url": "https://www.cityofhope.org"
                                 }
                             ]
                         },
                         {
                             "title": "Classic Blue T-Shirt",
-                            "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
-                                "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
+                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
                                 "messenger_extensions": true,
                                 "webview_height_ratio": "tall",
-                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                "fallback_url": "https://www.cityofhope.org"
                             },
                             "buttons": [
                                 {
                                     "title": "Buy",
                                     "type": "web_url",
-                                    "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+                                    "url": "https://www.cityofhope.org/research/research-overview",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                    "fallback_url": "https://www.cityofhope.org"
                                 }
                             ]
                         },
                         {
                             "title": "Classic Black T-Shirt",
-                            "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
+                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
-                                "url": "https://peterssendreceiveapp.ngrok.io/view?item=102",
+                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
                                 "messenger_extensions": true,
                                 "webview_height_ratio": "tall",
-                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                "fallback_url": "https://www.cityofhope.org"
                             },
                             "buttons": [
                                 {
                                     "title": "Buy",
                                     "type": "web_url",
-                                    "url": "https://peterssendreceiveapp.ngrok.io/shop?item=102",
+                                    "url": "https://www.cityofhope.org/research/research-overview",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                    "fallback_url": "https://www.cityofhope.org"
                                 }
                             ]
                         },
                         {
                             "title": "Classic Gray T-Shirt",
-                            "image_url": "https://peterssendreceiveapp.ngrok.io/img/gray-t-shirt.png",
+                            "image_url": https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
-                                "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+                                "url": "https://www.cityofhope.org/research/research-overview",
                                 "messenger_extensions": true,
                                 "webview_height_ratio": "tall",
-                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                "fallback_url": "https://www.cityofhope.org"
                             },
                             "buttons": [
                                 {
                                     "title": "Buy",
                                     "type": "web_url",
-                                    "url": "https://peterssendreceiveapp.ngrok.io/shop?item=103",
+                                    "url": "https://www.cityofhope.org/education/continuing-medical-education",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                    "fallback_url": "https://www.cityofhope.org"
                                 }
                             ]
                         }
