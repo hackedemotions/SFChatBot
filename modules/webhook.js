@@ -35,18 +35,37 @@ let processText = (text, sender) => {
                     "top_element_style": "compact",
                     "elements": [
                         {
-                            "title": "Classic White T-Shirt",
-                            "subtitle": "100% Cotton, 200% Comfortable",
-                            "default_action": {
-                                "type": "web_url",
-                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                "fallback_url": "https://www.cityofhope.org"
-                            },
+                            "title": "Research",
+                            "subtitle": "Research Overview",
                             "buttons": [
                                 {
-                                    "title": "Buy",
+                                    "title": "Read more",
+                                    "type": "web_url",
+                                    "url": "https://www.cityofhope.org/research/research-overview",
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://www.cityofhope.org"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Medical Education",
+                            "subtitle": "Continuing Medical Education",
+                            "buttons": [
+                                {
+                                    "title": "Read more",
+                                    "type": "web_url",
+                                    "url": "https://www.cityofhope.org/research/research-overview",
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://www.cityofhope.org"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Research",
+                            "subtitle": "Research Overview",
+                            "buttons": [
+                                {
+                                    "title": "Read more",
                                     "type": "web_url",
                                     "url": "https://www.cityofhope.org/research/research-overview",
                                     "messenger_extensions": true,
@@ -56,60 +75,11 @@ let processText = (text, sender) => {
                             ]
                         },
                         {
-                            "title": "Classic Blue T-Shirt",
-                            "subtitle": "100% Cotton, 200% Comfortable",
-                            "default_action": {
-                                "type": "web_url",
-                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                "fallback_url": "https://www.cityofhope.org"
-                            },
+                            "title": "Medical Education",
+                            "subtitle": "Continuing Medical Education",
                             "buttons": [
                                 {
-                                    "title": "Buy",
-                                    "type": "web_url",
-                                    "url": "https://www.cityofhope.org/research/research-overview",
-                                    "messenger_extensions": true,
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Classic Black T-Shirt",
-                            "subtitle": "100% Cotton, 200% Comfortable",
-                            "default_action": {
-                                "type": "web_url",
-                                "url": "https://www.cityofhope.org/education/continuing-medical-education",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                "fallback_url": "https://www.cityofhope.org"
-                            },
-                            "buttons": [
-                                {
-                                    "title": "Buy",
-                                    "type": "web_url",
-                                    "url": "https://www.cityofhope.org/research/research-overview",
-                                    "messenger_extensions": true,
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Classic Gray T-Shirt",
-                            "subtitle": "100% Cotton, 200% Comfortable",
-                            "default_action": {
-                                "type": "web_url",
-                                "url": "https://www.cityofhope.org/research/research-overview",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                "fallback_url": "https://www.cityofhope.org"
-                            },
-                            "buttons": [
-                                {
-                                    "title": "Buy",
+                                    "title": "Read more",
                                     "type": "web_url",
                                     "url": "https://www.cityofhope.org/education/continuing-medical-education",
                                     "messenger_extensions": true,
