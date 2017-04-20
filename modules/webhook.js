@@ -36,7 +36,6 @@ let processText = (text, sender) => {
                     "elements": [
                         {
                             "title": "Classic White T-Shirt",
-                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
@@ -58,7 +57,6 @@ let processText = (text, sender) => {
                         },
                         {
                             "title": "Classic Blue T-Shirt",
-                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
@@ -80,7 +78,6 @@ let processText = (text, sender) => {
                         },
                         {
                             "title": "Classic Black T-Shirt",
-                            "image_url": "https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
@@ -102,7 +99,6 @@ let processText = (text, sender) => {
                         },
                         {
                             "title": "Classic Gray T-Shirt",
-                            "image_url": https://www.cityofhope.org/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1436216260818&ssbinary=true",
                             "subtitle": "100% Cotton, 200% Comfortable",
                             "default_action": {
                                 "type": "web_url",
