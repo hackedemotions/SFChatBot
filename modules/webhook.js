@@ -41,9 +41,9 @@ let processText = (text, sender) => {
                                 {
                                     "title": "Read more",
                                     "type": "web_url",
-                                    "url": "https://www.cityofhope.org/research/research-overview",
+                                    "url": "https://www.google.com/research/research-overview",
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
+                                    "fallback_url": "https://www.google.com/"
                                 }
                             ]
                         },
@@ -54,9 +54,9 @@ let processText = (text, sender) => {
                                 {
                                     "title": "Read more",
                                     "type": "web_url",
-                                    "url": "https://www.cityofhope.org/research/research-overview",
+                                    "url": "https://www.google.com/research/research-overview",
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
+                                    "fallback_url": "https://www.google.com/"
                                 }
                             ]
                         },
@@ -67,10 +67,10 @@ let processText = (text, sender) => {
                                 {
                                     "title": "Read more",
                                     "type": "web_url",
-                                    "url": "https://www.cityofhope.org/research/research-overview",
+                                    "url": "https://www.google.com/research/research-overview",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
+                                    "fallback_url": "https://www.google.com/"
                                 }
                             ]
                         },
@@ -81,10 +81,10 @@ let processText = (text, sender) => {
                                 {
                                     "title": "Read more",
                                     "type": "web_url",
-                                    "url": "https://www.cityofhope.org/education/continuing-medical-education",
+                                    "url": "https://www.google.com/education/continuing-medical-education",
                                     "messenger_extensions": true,
                                     "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.cityofhope.org"
+                                    "fallback_url": "https://www.google.com/"
                                 }
                             ]
                         }
