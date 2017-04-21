@@ -4,6 +4,43 @@ let request = require('request'),
     salesforce = require('./salesforce'),
     formatter = require('./formatter-messenger');
 
+// All callbacks for Messenger will be POST-ed here
+app.post("/webhook", function (req, res) {
+    // Make sure this is a page subscription
+    if (req.body.object == "page") {
+        // Iterate over each entry
+        // There may be multiple entries if batched
+        req.body.entry.forEach(function (entry) {
+            // Iterate over each messaging event
+            entry.messaging.forEach(function (event) {
+                if (event.postback) {
+                    processPostback(event);
+                }
+            });
+        });
+
+        res.sendStatus(200);
+    }
+});
+
+let processPostback = (event) => {
+    var senderId = event.sender.id;
+    var payload = event.postback.payload;
+
+    if (payload.match(/Contact Us (.*)/i)) {
+        sendMessage({ text: `Creating a case for you` }, sender);
+        salesforce.createCase(match[1]).then(accounts => {
+            sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
+        });
+        return;
+    }
+    if (payload.match(/Check Available Appointments (.*)/i)) {
+        sendMessage({ text: `Looking for available appointments...` }, sender);
+        sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
+        return;
+    }
+}
+
 let sendMessage = (message, recipient) => {
     request({
         url: 'https://graph.facebook.com/me/messages',
@@ -18,20 +55,6 @@ let sendMessage = (message, recipient) => {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
-        }
-        
-        if (response.statusMessage.match(/Contact Us (.*)/i)) {
-            sendMessage({ text: `Creating a case for you` }, sender);
-            salesforce.createCase(match[1]).then(accounts => {
-                sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
-            });
-            return;
-        }
-
-        if (response.statusMessage.match(/Check Available Appointments (.*)/i)) {
-            sendMessage({ text: `Looking for available appointments...` }, sender);
-            sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
-            return;
         }
     });
 };
