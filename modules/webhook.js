@@ -20,7 +20,7 @@ let sendMessage = (message, recipient) => {
             console.log('Error: ', response.body.error);
         }
         
-        if (response.match(/Contact Us (.*)/i)) {
+        if (response.statusMessage.match(/Contact Us (.*)/i)) {
             sendMessage({ text: `Creating a case for you` }, sender);
             salesforce.createCase(match[1]).then(accounts => {
                 sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
@@ -28,7 +28,7 @@ let sendMessage = (message, recipient) => {
             return;
         }
 
-        if (response.match(/Check Available Appointments (.*)/i)) {
+        if (response.statusMessage.match(/Check Available Appointments (.*)/i)) {
             sendMessage({ text: `Looking for available appointments...` }, sender);
             sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
             return;
