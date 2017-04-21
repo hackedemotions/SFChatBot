@@ -51,7 +51,7 @@ Let's get started.`}, sender);
                         }, {
                             type: "postback",
                             title: "Check Available Appointments",
-                            payload: "Payload for first bubble",
+                            payload: "Available_Appointments",
                         }],
                     }, {
                         title: "Symptom Mangement",
@@ -69,7 +69,7 @@ Let's get started.`}, sender);
                         }, {
                             type: "postback",
                             title: "Contact Us",
-                            payload: "Payload for second bubble",
+                            payload: "Contact_Us",
                         }],
                     }, {
                         title: "Insurance coverage and plans",
@@ -157,18 +157,15 @@ let handlePost = (req, res) => {
         } else if (event.message && event.message.text) {
             processText(event.message.text, sender);
         } else if (event.postback) {
-            sendMessage({ text: `Looking for available appointments...` }, sender);
-            sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
             let payload = event.postback.payload;
-            if (payload.match(/Contact Us (.*)/i)) {
+            if (payload == "Contact_Us") {
                 sendMessage({ text: `Creating a case for you` }, sender);
                 salesforce.createCase(match[1]).then(accounts => {
                     sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
                 });
                 return;
             }
-            if (payload.match(/Check Available Appointments (.*)/i)) {
-                sendMessage({ text: `Looking for available appointments...` }, sender);
+            if (payload == "Available_Appointments") {
                 sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
                 return;
             }
