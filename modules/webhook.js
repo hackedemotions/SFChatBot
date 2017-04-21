@@ -24,7 +24,55 @@ let sendMessage = (message, recipient) => {
 
 let processText = (text, sender) => {
     let match;
-    let responseTxt = 'Hi, How can I help you ?';
+    match = text.match(/get started/i);
+    if (match) {
+        sendMessage({
+            text:
+            `Hello! Welcome to Ab's health bot. We're here to guide you through the intake process.
+             Let's get started.`}, sender);
+        sendMessage({
+            text:
+            `What would you like to do ?`
+        }, sender);
+        sendMessage({
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "List",
+                    elements: [{
+                        title: "rift",
+                        subtitle: "Next-generation virtual reality",
+                        item_url: "https://www.oculus.com/en-us/rift/",
+                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                        buttons: [{
+                            type: "web_url",
+                            url: "https://www.oculus.com/en-us/rift/",
+                            title: "Open Web URL"
+                        }, {
+                            type: "postback",
+                            title: "Call Postback",
+                            payload: "Payload for first bubble",
+                        }],
+                    }, {
+                        title: "touch",
+                        subtitle: "Your Hands, Now in VR",
+                        item_url: "https://www.oculus.com/en-us/touch/",
+                        image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+                        buttons: [{
+                            type: "web_url",
+                            url: "https://www.oculus.com/en-us/touch/",
+                            title: "Open Web URL"
+                        }, {
+                            type: "postback",
+                            title: "Call Postback",
+                            payload: "Payload for second bubble",
+                        }]
+                    }]
+                }
+            }
+        }, sender);
+        return;
+    }
     match = text.match(/hi/i);
     if (match) {
         sendMessage({
