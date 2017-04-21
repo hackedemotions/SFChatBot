@@ -4,43 +4,6 @@ let request = require('request'),
     salesforce = require('./salesforce'),
     formatter = require('./formatter-messenger');
 
-// All callbacks for Messenger will be POST-ed here
-app.post("/webhook", function (req, res) {
-    // Make sure this is a page subscription
-    if (req.body.object == "page") {
-        // Iterate over each entry
-        // There may be multiple entries if batched
-        req.body.entry.forEach(function (entry) {
-            // Iterate over each messaging event
-            entry.messaging.forEach(function (event) {
-                if (event.postback) {
-                    processPostback(event);
-                }
-            });
-        });
-
-        res.sendStatus(200);
-    }
-});
-
-let processPostback = (event) => {
-    var senderId = event.sender.id;
-    var payload = event.postback.payload;
-
-    if (payload.match(/Contact Us (.*)/i)) {
-        sendMessage({ text: `Creating a case for you` }, sender);
-        salesforce.createCase(match[1]).then(accounts => {
-            sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
-        });
-        return;
-    }
-    if (payload.match(/Check Available Appointments (.*)/i)) {
-        sendMessage({ text: `Looking for available appointments...` }, sender);
-        sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
-        return;
-    }
-}
-
 let sendMessage = (message, recipient) => {
     request({
         url: 'https://graph.facebook.com/me/messages',
@@ -194,7 +157,20 @@ let handlePost = (req, res) => {
         } else if (event.message && event.message.text) {
             processText(event.message.text, sender);
         } else if (event.postback) {
-            let payload = event.postback.payload.split(",");
+            let payload = event.postback.payload;
+            if (payload.match(/Contact Us (.*)/i)) {
+                sendMessage({ text: `Creating a case for you` }, sender);
+                salesforce.createCase(match[1]).then(accounts => {
+                    sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
+                });
+                return;
+            }
+            if (payload.match(/Check Available Appointments (.*)/i)) {
+                sendMessage({ text: `Looking for available appointments...` }, sender);
+                sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
+                return;
+            }
+            /*let payload = event.postback.payload.split(",");
             if (payload[0] === "view_contacts") {
                 sendMessage({ text: "OK, looking for your contacts at " + payload[2] + "..." }, sender);
                 salesforce.findContactsByAccount(payload[1]).then(contacts => sendMessage(formatter.formatContacts(contacts), sender));
@@ -202,7 +178,7 @@ let handlePost = (req, res) => {
                 sendMessage({ text: `OK, I closed the opportunity "${payload[2]}" as "Close Won". Way to go Christophe!` }, sender);
             } else if (payload[0] === "close_lost") {
                 sendMessage({ text: `I'm sorry to hear that. I closed the opportunity "${payload[2]}" as "Close Lost".` }, sender);
-            }
+            }*/
         }
     }
     res.sendStatus(200);
