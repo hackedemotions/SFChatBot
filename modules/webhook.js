@@ -6,7 +6,7 @@ let request = require('request'),
 
 let sendMessage = (message, recipient) => {
     request({
-        url: 'https://graph.facebook.com/me/messages',
+        url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: process.env.FB_PAGE_TOKEN },
         method: 'POST',
         json: {
@@ -28,76 +28,14 @@ let processText = (text, sender) => {
     match = text.match(/hi/i);
     if (match) {
         sendMessage({
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "list",
-                    "top_element_style": "compact",
-                    "elements": [
-                        {
-                            "title": "Research",
-                            "subtitle": "Research Overview",
-                            "buttons": [
-                                {
-                                    "title": "Read more",
-                                    "type": "web_url",
-                                    "url": "https://www.google.com/research/research-overview",
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.google.com/"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Medical Education",
-                            "subtitle": "Continuing Medical Education",
-                            "buttons": [
-                                {
-                                    "title": "Read more",
-                                    "type": "web_url",
-                                    "url": "https://www.google.com/research/research-overview",
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.google.com/"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Research",
-                            "subtitle": "Research Overview",
-                            "buttons": [
-                                {
-                                    "title": "Read more",
-                                    "type": "web_url",
-                                    "url": "https://www.google.com/research/research-overview",
-                                    "messenger_extensions": true,
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.google.com/"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Medical Education",
-                            "subtitle": "Continuing Medical Education",
-                            "buttons": [
-                                {
-                                    "title": "Read more",
-                                    "type": "web_url",
-                                    "url": "https://www.google.com/education/continuing-medical-education",
-                                    "messenger_extensions": true,
-                                    "webview_height_ratio": "tall",
-                                    "fallback_url": "https://www.google.com/"
-                                }
-                            ]
-                        }
-                    ],
-                    "buttons": [
-                        {
-                            "title": "View More",
-                            "type": "postback",
-                            "payload": "payload"
-                        }
-                    ]
-                }
-            }
+            text:
+            `Hi, How can I help you ?
+        You can ask me things like:
+        search patient <<name>>
+        book appointment
+        symptom <<name>>
+        create case <<summary>>
+         `
         }, sender);
         return;
     }
