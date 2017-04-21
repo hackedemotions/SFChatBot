@@ -40,32 +40,28 @@ let processText = (text, sender) => {
                 payload: {
                     template_type: "List",
                     elements: [{
-                        title: "rift",
-                        subtitle: "Next-generation virtual reality",
-                        item_url: "https://www.oculus.com/en-us/rift/",
-                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                        title: "Appointment Scheduling",
+                        subtitle: "Schedule your appointments",
                         buttons: [{
                             type: "web_url",
-                            url: "https://www.oculus.com/en-us/rift/",
-                            title: "Open Web URL"
+                            url: "https://secure.cityofhope.org/newpatientrequest/",
+                            title: "Schedule"
                         }, {
                             type: "postback",
-                            title: "Call Postback",
+                            title: "Schedule",
                             payload: "Payload for first bubble",
                         }],
                     }, {
-                        title: "touch",
-                        subtitle: "Your Hands, Now in VR",
-                        item_url: "https://www.oculus.com/en-us/touch/",
-                        image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+                        title: "Symptom Mangement",
+                        subtitle: "Manage your symptoms",
                         buttons: [{
                             type: "web_url",
-                            url: "https://www.oculus.com/en-us/touch/",
-                            title: "Open Web URL"
+                            url: "https://www.cityofhope.org/patients/living-with-cancer/understanding-your-chemotherapy-treatment",
+                            title: "Read about CHEMOTHERAPY"
                         }, {
-                            type: "postback",
-                            title: "Call Postback",
-                            payload: "Payload for second bubble",
+                            type: "web_url",
+                            url: "https://www.cityofhope.org/patients/living-with-cancer/caregiving-for-a-cancer-patient",
+                            title: "CAREGIVING FOR A CANCER PATIENT",
                         }]
                     }]
                 }
