@@ -168,7 +168,7 @@ let handlePost = (req, res) => {
         } else if (event.postback) {
             let payload = event.postback.payload;
             if (payload == "Contact_Us") {
-                sendMessage({ text: `Creating a case for you` }, sender);
+                sendMessage({ text: `We have created a case for you, someone from our team will get back to you soon.` }, sender);
                 return;
             }
             if (payload == "Available_Appointments") {
