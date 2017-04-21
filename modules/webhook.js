@@ -25,11 +25,11 @@ let sendMessage = (message, recipient) => {
 let processText = (text, sender) => {
     let match;
     match = text.match(/get started/i);
-    if (match) {
+    if (match || text.match(/hi/i)) {
         sendMessage({
             text:
             `Hello! Welcome to Ab's health bot. We're here to guide you through the intake process.
-             Let's get started.`}, sender);
+Let's get started.`}, sender);
         sendMessage({
             text:
             `What would you like to do ?`
@@ -48,7 +48,7 @@ let processText = (text, sender) => {
                             title: "Schedule"
                         }, {
                             type: "postback",
-                            title: "Schedule",
+                            title: "Check Available Appointments",
                             payload: "Payload for first bubble",
                         }],
                     }, {
@@ -57,19 +57,36 @@ let processText = (text, sender) => {
                         buttons: [{
                             type: "web_url",
                             url: "https://www.cityofhope.org/patients/living-with-cancer/understanding-your-chemotherapy-treatment",
-                            title: "Read about CHEMOTHERAPY"
+                            title: "CHEMOTHERAPY"
                         }, {
                             type: "web_url",
                             url: "https://www.cityofhope.org/patients/living-with-cancer/caregiving-for-a-cancer-patient",
                             title: "CAREGIVING FOR A CANCER PATIENT",
+                        }, {
+                            type: "postback",
+                            title: "Contact Us",
+                            payload: "Payload for second bubble",
+                        }],
+                    }, {
+                        title: "Insurance coverage and plans",
+                        subtitle: "HELPING YOU WITH INSURANCE, BILLING AND LEGAL ISSUES",
+                        buttons: [{
+                            type: "web_url",
+                            url: "https://www.cityofhope.org/patients/making-your-first-appointment/helping-you-with-insurance-billing-and-legal-information",
+                            title: "Financial Counselors"
+                        }, {
+                            type: "web_url",
+                            url: "https://www.cityofhope.org/patients/making-your-first-appointment/helping-you-with-insurance-billing-and-legal-information",
+                            title: "Billing",
                         }]
-                    }]
+                    }
+                        ]
                 }
             }
         }, sender);
         return;
     }
-    match = text.match(/hi/i);
+    match = text.match(/hiasdasdasd/i);
     if (match) {
         sendMessage({
             attachment: {
@@ -157,11 +174,11 @@ let processText = (text, sender) => {
         return;
     }
 
-    match = text.match(/create case (.*)/i);
-    if (match) {
+    match = text.match(/create case (.*)/i); 
+    if (match || text.match(/Contact Us (.*)/i)) {
         sendMessage({ text: `Creating a case for you` }, sender);
         salesforce.createCase(match[1]).then(accounts => {
-            sendMessage({ text: `Your case has been created` }, sender);
+            sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
         });
         return;
     }
