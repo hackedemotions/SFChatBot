@@ -138,6 +138,15 @@ Let's get started.`}, sender);
         sendMessage(formatter.symptomManagement('test'), sender);
         return;
     }
+
+    match = text.match(/create case (.*)/i);
+    if (match || text.match(/Contact Us (.*)/i)) {
+        sendMessage({ text: `Creating a case for you` }, sender);
+        salesforce.createCase(match[1]).then(accounts => {
+            sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
+        });
+        return;
+    }
 };
 
 let handleGet = (req, res) => {
@@ -160,9 +169,6 @@ let handlePost = (req, res) => {
             let payload = event.postback.payload;
             if (payload == "Contact_Us") {
                 sendMessage({ text: `Creating a case for you` }, sender);
-                salesforce.createCase(match[1]).then(accounts => {
-                    sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
-                });
                 return;
             }
             if (payload == "Available_Appointments") {
