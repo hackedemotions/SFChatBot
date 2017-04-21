@@ -28,14 +28,48 @@ let processText = (text, sender) => {
     match = text.match(/hi/i);
     if (match) {
         sendMessage({
-            text:
-            `Hi, How can I help you ?
-        You can ask me things like:
-        search patient <<name>>
-        book appointment
-        symptom <<name>>
-        create case <<summary>>
-         `
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "list",
+                    "top_element_style": "compact",
+                    "elements": [
+                        {
+                            "title": "Research",
+                            "subtitle": "Research Overview",
+                            "buttons": [
+                                {
+                                    "title": "Read more",
+                                    "type": "web_url",
+                                    "url": "https://www.google.com/research/research-overview",
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://www.google.com/"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Medical Education",
+                            "subtitle": "Continuing Medical Education",
+                            "buttons": [
+                                {
+                                    "title": "Read more",
+                                    "type": "web_url",
+                                    "url": "https://www.google.com/research/research-overview",
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://www.google.com/"
+                                }
+                            ]
+                        }
+                    ],
+                    "buttons": [
+                        {
+                            "title": "View More",
+                            "type": "postback",
+                            "payload": "payload"
+                        }
+                    ]
+                }
+            }
         }, sender);
         return;
     }
