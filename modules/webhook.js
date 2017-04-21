@@ -19,6 +19,20 @@ let sendMessage = (message, recipient) => {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
         }
+        
+        if (response.match(/Contact Us (.*)/i)) {
+            sendMessage({ text: `Creating a case for you` }, sender);
+            salesforce.createCase(match[1]).then(accounts => {
+                sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
+            });
+            return;
+        }
+
+        if (response.match(/Check Available Appointments (.*)/i)) {
+            sendMessage({ text: `Looking for available appointments...` }, sender);
+            sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
+            return;
+        }
     });
 };
 
@@ -136,15 +150,6 @@ Let's get started.`}, sender);
     if (match) {
         sendMessage({ text: `Looking for articles on symptom management for "${match[1]}":` }, sender);
         sendMessage(formatter.symptomManagement('test'), sender);
-        return;
-    }
-
-    match = text.match(/create case (.*)/i); 
-    if (match || text.match(/Contact Us (.*)/i)) {
-        sendMessage({ text: `Creating a case for you` }, sender);
-        salesforce.createCase(match[1]).then(accounts => {
-            sendMessage({ text: `Your case has been created, someone from our team will get back to you soon.` }, sender);
-        });
         return;
     }
 };
