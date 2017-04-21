@@ -38,7 +38,7 @@ let processText = (text, sender) => {
             attachment: {
                 type: "template",
                 payload: {
-                    template_type: "List",
+                    template_type: "generic",
                     elements: [{
                         title: "Appointment Scheduling",
                         subtitle: "Schedule your appointments",
