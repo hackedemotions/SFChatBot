@@ -42,6 +42,8 @@ Let's get started.`}, sender);
                     elements: [{
                         title: "Appointment Scheduling",
                         subtitle: "Schedule your appointments",
+                        item_url: "https://secure.cityofhope.org/newpatientrequest/",
+                        image_url: "http://placehold.it/350x150/E8117F/ffffff?text=Appointments",
                         buttons: [{
                             type: "web_url",
                             url: "https://secure.cityofhope.org/newpatientrequest/",
@@ -54,6 +56,8 @@ Let's get started.`}, sender);
                     }, {
                         title: "Symptom Mangement",
                         subtitle: "Manage your symptoms",
+                        item_url: "https://www.cityofhope.org/patients/living-with-cancer/understanding-your-chemotherapy-treatment",
+                        image_url: "http://placehold.it/350x150/3399ff/ffffff?text=Symptoms",
                         buttons: [{
                             type: "web_url",
                             url: "https://www.cityofhope.org/patients/living-with-cancer/understanding-your-chemotherapy-treatment",
@@ -70,6 +74,8 @@ Let's get started.`}, sender);
                     }, {
                         title: "Insurance coverage and plans",
                         subtitle: "HELPING YOU WITH INSURANCE, BILLING AND LEGAL ISSUES",
+                        item_url: "https://www.cityofhope.org/patients/making-your-first-appointment/helping-you-with-insurance-billing-and-legal-information",
+                        image_url: "http://placehold.it/350x150/9900ff/ffffff?text=Insurance",
                         buttons: [{
                             type: "web_url",
                             url: "https://www.cityofhope.org/patients/making-your-first-appointment/helping-you-with-insurance-billing-and-legal-information",
@@ -81,47 +87,6 @@ Let's get started.`}, sender);
                         }]
                     }
                         ]
-                }
-            }
-        }, sender);
-        return;
-    }
-    match = text.match(/hiasdasdasd/i);
-    if (match) {
-        sendMessage({
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "generic",
-                    elements: [{
-                        title: "rift",
-                        subtitle: "Next-generation virtual reality",
-                        item_url: "https://www.oculus.com/en-us/rift/",
-                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
-                        buttons: [{
-                            type: "web_url",
-                            url: "https://www.oculus.com/en-us/rift/",
-                            title: "Open Web URL"
-                        }, {
-                            type: "postback",
-                            title: "Call Postback",
-                            payload: "Payload for first bubble",
-                        }],
-                    }, {
-                        title: "touch",
-                        subtitle: "Your Hands, Now in VR",
-                        item_url: "https://www.oculus.com/en-us/touch/",
-                        image_url: "http://messengerdemo.parseapp.com/img/touch.png",
-                        buttons: [{
-                            type: "web_url",
-                            url: "https://www.oculus.com/en-us/touch/",
-                            title: "Open Web URL"
-                        }, {
-                            type: "postback",
-                            title: "Call Postback",
-                            payload: "Payload for second bubble",
-                        }]
-                    }]
                 }
             }
         }, sender);
