@@ -157,6 +157,8 @@ let handlePost = (req, res) => {
         } else if (event.message && event.message.text) {
             processText(event.message.text, sender);
         } else if (event.postback) {
+            sendMessage({ text: `Looking for available appointments...` }, sender);
+            sendMessage({ text: `Sorry we could not find any available appointments !` }, sender);
             let payload = event.postback.payload;
             if (payload.match(/Contact Us (.*)/i)) {
                 sendMessage({ text: `Creating a case for you` }, sender);
